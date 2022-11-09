@@ -19,31 +19,72 @@ function playRound(playerSelection, computerSelection) {
         case "rock":
             switch(computerSelection) {
                 case "scissors":
-                    return `You Win! ${pSel} beats ${cSel}`;
+                    console.log(`You Win! ${pSel} beats ${cSel}`);
+                    return "win";
                 case "paper":
-                    return `You Lose! ${cSel} beats ${pSel}`;
+                    console.log(`You Lose! ${cSel} beats ${pSel}`);
+                    return "lose";
                 default:
-                    return "It's a Draw!";
+                    console.log("It's a Draw!");
+                    return "draw";
             }
         case "paper":
             switch(computerSelection) {
                 case "rock":
-                    return `You Win! ${pSel} beats ${cSel}`;
+                    console.log(`You Win! ${pSel} beats ${cSel}`);
+                    return "win";
                 case "scissors":
-                    return `You Lose! ${cSel} beats ${pSel}`;
+                    console.log(`You Lose! ${cSel} beats ${pSel}`);
+                    return "lose";
                 default:
-                    return "It's a Draw!";
+                    console.log("It's a Draw!");
+                    return "draw";
             }
         case "scissors":
             switch(computerSelection) {
                 case "paper":
-                    return `You Win! ${pSel} beats ${cSel}`;
+                    console.log(`You Win! ${pSel} beats ${cSel}`);
+                    return "win";
                 case "rock":
-                    return `You Lose! ${cSel} beats ${pSel}`;
+                    console.log(`You Lose! ${cSel} beats ${pSel}`);
+                    return "lose";
                 default:
-                    return "It's a Draw!";
+                    console.log("It's a Draw!");
+                    return "draw";
             }
         default:
             return "Something went wrong...";
     }
+}
+
+function game(){
+    let playerWins = 0;
+    let computerWins = 0;
+
+    for (let i = 0; i < 5; i ++) {
+        let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+        let result = playRound(playerSelection, getComputerChoice());
+        switch(result) {
+            case "win":
+                playerWins ++;
+                break;
+            case "lose":
+                computerWins ++;
+                break;
+            default:
+                break;
+        }
+    }
+
+    if(playerWins > computerWins) {
+        console.log("You Won! Congradulations!");
+    }
+    else if (computerWins > playerWins) {
+        console.log("You Lost! Better luck next time!");
+    }
+    else {
+        console.log("It's was a Draw!");
+    }
+
+    return;
 }
