@@ -61,7 +61,7 @@ function game(){
     let playerWins = 0;
     let computerWins = 0;
 
-    for (let i = 0; i < 5; i ++) {
+    //for (let i = 0; i < 5; i ++) {
         let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
         let result = playRound(playerSelection, getComputerChoice());
         switch(result) {
@@ -74,7 +74,7 @@ function game(){
             default:
                 break;
         }
-    }
+    //}
 
     if(playerWins > computerWins) {
         console.log("You Won! Congradulations!");
@@ -83,8 +83,18 @@ function game(){
         console.log("You Lost! Better luck next time!");
     }
     else {
-        console.log("It's was a Draw!");
+        console.log("It was a Draw!");
     }
 
     return;
 }
+
+const rpsBtns = document.querySelectorAll("button");
+console.log(rpsBtns);
+rpsBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id, getComputerChoice());
+    });
+});
+
+const display = document.querySelector('#display');
