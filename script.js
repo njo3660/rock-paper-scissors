@@ -19,37 +19,37 @@ function playRound(playerSelection, computerSelection) {
         case "rock":
             switch(computerSelection) {
                 case "scissors":
-                    console.log(`You Win! ${pSel} beats ${cSel}`);
+                    display.textContent = `You Win! ${pSel} beats ${cSel}.`;
                     return "win";
                 case "paper":
-                    console.log(`You Lose! ${cSel} beats ${pSel}`);
+                    display.textContent = `You Lose! ${cSel} beats ${pSel}.`;
                     return "lose";
                 default:
-                    console.log("It's a Draw!");
+                    display.textContent = "It's a Draw!";
                     return "draw";
             }
         case "paper":
             switch(computerSelection) {
                 case "rock":
-                    console.log(`You Win! ${pSel} beats ${cSel}`);
+                    display.textContent = `You Win! ${pSel} beats ${cSel}.`;
                     return "win";
                 case "scissors":
-                    console.log(`You Lose! ${cSel} beats ${pSel}`);
+                    display.textContent = `You Lose! ${cSel} beats ${pSel}.`;
                     return "lose";
                 default:
-                    console.log("It's a Draw!");
+                    display.textContent = "It's a Draw!";
                     return "draw";
             }
         case "scissors":
             switch(computerSelection) {
                 case "paper":
-                    console.log(`You Win! ${pSel} beats ${cSel}`);
+                    display.textContent = `You Win! ${pSel} beats ${cSel}.`;
                     return "win";
                 case "rock":
-                    console.log(`You Lose! ${cSel} beats ${pSel}`);
+                    display.textContent = `You Lose! ${cSel} beats ${pSel}.`;
                     return "lose";
                 default:
-                    console.log("It's a Draw!");
+                    display.textContent = "It's a Draw!";
                     return "draw";
             }
         default:
@@ -90,7 +90,7 @@ function game(){
 }
 
 const rpsBtns = document.querySelectorAll("button");
-console.log(rpsBtns);
+
 rpsBtns.forEach((button) => {
     button.addEventListener('click', () => {
         playRound(button.id, getComputerChoice());
