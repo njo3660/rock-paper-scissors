@@ -90,11 +90,50 @@ function game(){
 }
 
 const rpsBtns = document.querySelectorAll("button");
+let playerWins = 0;
+let computerWins = 0;
 
 rpsBtns.forEach((button) => {
     button.addEventListener('click', () => {
-        playRound(button.id, getComputerChoice());
+        if (playerWins === 5 || computerWins === 5){
+            return;
+        }
+        let result = playRound(button.id, getComputerChoice());
+        switch(result) {
+            case "win":
+                playerWins ++;
+                playerScoreboard.textContent = playerWins;
+                break;
+            case "lose":
+                computerWins ++;
+                computerScoreboard.textContent = computerWins;
+                break;
+            default:
+                break;
+        }
+        if (playerWins === 5) {
+            display.textContent = "You Won! Congradulations!";
+            body.appendChild(retry);
+        }
+        else if (computerWins === 5) {
+            display.textContent = "You Lost! Better luck next time!";
+            body.appendChild(retry);
+        }
     });
 });
 
 const display = document.querySelector('#display');
+const playerScoreboard = document.querySelector('#playerScore');
+const computerScoreboard = document.querySelector('#computerScore');
+const body = document.querySelector('body');
+
+const retry = document.createElement('button');
+retry.textContent = "Play Again?";
+retry.addEventListener('click', () => {
+    playerWins = 0;
+    computerWins = 0;
+    playerScoreboard.textContent = 0;
+    computerScoreboard.textContent = 0;
+    display.textContent = '';
+    body.removeChild(retry);
+})
